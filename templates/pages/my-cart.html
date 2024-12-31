@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    {% if cart_items %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item[1] }}</td>  <!-- Product ID -->
+                        <td>{{ item[2] }}</td>  <!-- Product Name -->
+                        <td>{{ item[3] }}</td>  <!-- Quantity -->
+                        <td>${{ item[4] }}</td>  <!-- Price -->
+                        <td>${{ item[3] * item[4] }}</td>  <!-- Total -->
+                        <td>
+                            <a href="{{ url_for('remove_from_cart_route', cart_id=item[0]) }}">Remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h3>Total Amount: ${{ sum(item[3] * item[4] for item in cart_items) }}</h3>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+    <a href="{{ url_for('checkout') }}">Proceed to Checkout</a>
+    <a href="{{ url_for('products') }}">Continue Shopping</a>
+</body>
+</html>

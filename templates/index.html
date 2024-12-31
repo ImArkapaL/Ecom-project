@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome to the E-Commerce Website!</h1>
+    <p>
+        {% if session.user_id %}
+            Hello, User! You are logged in.
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('my_cart') }}">My Cart</a>
+        {% else %}
+            <a href="{{ url_for('login_page') }}">Login</a> or 
+            <a href="{{ url_for('signup_page') }}">Sign Up</a>
+        {% endif %}
+    </p>
+    <a href="{{ url_for('products') }}">View Products</a>
+    <a href="{{ url_for('admin_page') }}">Admin Page</a>
+</body>
+</html>

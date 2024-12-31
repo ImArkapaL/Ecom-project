@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form action="/signup" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail" required>
+        <br>
+
+        <label for="ph-no">Phone Number:</label>
+        <input type="text" id="ph-no" name="ph-no" required>
+        <br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+        <br>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <br>
+    <a href="{{ url_for('login_page') }}">Already have an account? Login here</a>
+</body>
+</html>
